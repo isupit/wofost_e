@@ -1,0 +1,45 @@
+**
+** Management data file for use with LINTUL5 (NPK) model, August 2011
+**
+** Management type ??
+
+
+** Fertiliser N, P and K applications 
+FERNTAB =   0.,    0.0,  !  kg N/ha
+            99.,   10.0,  ! as function of day number
+            300.,  10.0
+
+FERPTAB =   0.,    0.0,  !  kg N/ha
+            99.,   10.0,  ! as function of day number
+            300.,  10.0
+
+FERKTAB =   0.,    0.0,  !  kg N/ha
+            99.,   10.0,  ! as function of day number
+            300.,  10.0
+
+
+** Recovery fraction of applied fertiliser N, P and K
+NRFTAB  =     0.,  0.70,  !  kg N uptake by the crop per kg fertiliser-N applied
+             300., 0.70   !  as function of day number
+
+PRFTAB  =     0.,  0.20,  !  kg P uptake by the crop per kg fertiliser-P applied
+             300., 0.20   !  as function of day number
+
+KRFTAB  =     0.,  0.60,  !  kg K uptake by the crop per kg fertiliser-K applied
+             300., 0.60   !  as function of day number
+
+
+* Soil N, P and K mineralization
+NMINS    =     1.  !  total mineral soil N available at start of growth period [kg N/ha]
+RTNMINS  =   0.025  ! fraction of soil mineral N coming available per day [day-1]
+
+PMINS   =       1.  !  total mineral soil P available at start of growth period [kg P/ha]
+RTPMINS  =   0.025  ! fraction of soil mineral P coming available per day [day-1]
+
+KMINS   =      1.  !  total mineral soil K available at start of growth period [kg N/ha]
+RTKMINS  =   0.025  ! fraction of soil mineral K coming available per day [day-1]
+
+
+* irrigation water applied 
+IRRTAB   =   0., 0.0,  !  irrigation water applied per day [cm]
+             365., 0.0

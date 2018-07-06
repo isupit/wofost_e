@@ -1,0 +1,4 @@
+- Determine LAI error to peak
+- Determine DMP error to peak
+
+--> optimize for these errors to peak

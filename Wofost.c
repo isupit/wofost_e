@@ -73,6 +73,7 @@ int main() {
         else
         {
             Grid->next = malloc(sizeof(SimUnit));
+            Grid = Grid->next;
         }
         
         GetCropData(Grid->crp   = malloc(sizeof(Plant)), cropfile); 
@@ -108,9 +109,6 @@ int main() {
    /* Read ensemble data */
    GetEnsembles(q_ensembles,tmin_ensembles,tmax_ensembles,sw_ensembles,wind_ensembles,precip_ensembles,max_N_ensembles);
 
-    
-    /* Set Grid back to the initial address */
-    Grid = initial;   
     
     /* Get the meteodata */
     GetMeteoData(path, dateString, place);

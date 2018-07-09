@@ -1,5 +1,4 @@
 #include "wofost.h"
-#include "crop.h"
 
 /* ---------------------------------------------------------------*/
 /*  function ResetEnsemble()                                      */
@@ -7,7 +6,7 @@
 /*           the parameters do not change!                        */
 /* ---------------------------------------------------------------*/
 
-void GetCropData(Plant *CROP, Soil *SOIL)
+void ResetEnsemble(Plant *CROP, Soil *SOIL)
 {
     /* Crop development has not started yet*/
     CROP->RootDepth = 0.;

@@ -71,6 +71,7 @@ extern void  GetSoilData();
 extern void FillSoilVariables();
 extern void GetManagement();
 extern void FillManageVariables();
+extern void ResetEnsemble();
 
 
 /* Water balance */

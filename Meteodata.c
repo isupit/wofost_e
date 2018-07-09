@@ -141,56 +141,57 @@ int GetEnsembles(float* qarray, float* tminarray, float* tmaxarray, float* swarr
         int ncid, varid;//
 
     /* The start and count arrays will tell the netCDF library where to read the data. */
-        size_t start[2], count[2];
+    size_t start[2], count[2];
 
-           /* Error handling. */
-           int retval;
+    /* Error handling. */
+    int retval;
 
-           /* Open the file. */
-           if ((retval = nc_open("data/ensembles.nc", NC_NOWRITE, &ncid)))
-		fprintf(stderr,"Ensembles Netcdf not opened.\n");
+    /* Open the file. */
+    if ((retval = nc_open("data/ensembles.nc", NC_NOWRITE, &ncid)))
+        fprintf(stderr,"Ensembles Netcdf not opened.\n");
 
-           /* Read the data. Since we know the contents of the file we know
-             * that the data arrays in this program are the correct size to
-             * hold one timestep. */
-            count[0] = N_ensembles;
-            count[1] = 732;
-            start[0] = 0;
-            start[1] = 0;
-	   
-		if ((retval = nc_inq_varid(ncid, "q" , &varid)))
-		   fprintf(stderr,"Netcdf variable not found.\n");
-		if ((retval = nc_get_vara_float(ncid, varid, start,count, &qarray[0])))
-		   fprintf(stderr,"Netcdf data not read.\n");
+    /* Read the data. Since we know the contents of the file we know
+     * that the data arrays in this program are the correct size to
+     * hold one timestep. */
+    
+    count[0] = N_ensembles;
+    count[1] = 732;
+    start[0] = 0;
+    start[1] = 0;
+   
+    if ((retval = nc_inq_varid(ncid, "q" , &varid)))
+       fprintf(stderr,"Netcdf variable not found.\n");
+    if ((retval = nc_get_vara_float(ncid, varid, start,count, &qarray[0])))
+       fprintf(stderr,"Netcdf data not read.\n");
 
-		if ((retval = nc_inq_varid(ncid, "tmin" , &varid)))
-		   fprintf(stderr,"Netcdf variable not found.\n");
-		if ((retval = nc_get_vara_float(ncid, varid, start,count, &tminarray[0])))
-		   fprintf(stderr,"Netcdf data not read.\n");
+    if ((retval = nc_inq_varid(ncid, "tmin" , &varid)))
+       fprintf(stderr,"Netcdf variable not found.\n");
+    if ((retval = nc_get_vara_float(ncid, varid, start,count, &tminarray[0])))
+       fprintf(stderr,"Netcdf data not read.\n");
 
-		if ((retval = nc_inq_varid(ncid, "precip" , &varid)))
-		   fprintf(stderr,"Netcdf variable not found.\n");
-		if ((retval = nc_get_vara_float(ncid, varid, start,count, &preciparray[0])))
-		   fprintf(stderr,"Netcdf data not read.\n");
+    if ((retval = nc_inq_varid(ncid, "precip" , &varid)))
+       fprintf(stderr,"Netcdf variable not found.\n");
+    if ((retval = nc_get_vara_float(ncid, varid, start,count, &preciparray[0])))
+       fprintf(stderr,"Netcdf data not read.\n");
 
-		if ((retval = nc_inq_varid(ncid, "sw" , &varid)))
-		   fprintf(stderr,"Netcdf variable not found.\n");
-		if ((retval = nc_get_vara_float(ncid, varid, start,count, &swarray[0])))
-		   fprintf(stderr,"Netcdf data not read.\n");
+    if ((retval = nc_inq_varid(ncid, "sw" , &varid)))
+       fprintf(stderr,"Netcdf variable not found.\n");
+    if ((retval = nc_get_vara_float(ncid, varid, start,count, &swarray[0])))
+       fprintf(stderr,"Netcdf data not read.\n");
 
-		if ((retval = nc_inq_varid(ncid, "tmax" , &varid)))
-		   fprintf(stderr,"Netcdf variable not found.\n");
-		if ((retval = nc_get_vara_float(ncid, varid, start,count, &tmaxarray[0])))
-		   fprintf(stderr,"Netcdf data not read.\n");
+    if ((retval = nc_inq_varid(ncid, "tmax" , &varid)))
+       fprintf(stderr,"Netcdf variable not found.\n");
+    if ((retval = nc_get_vara_float(ncid, varid, start,count, &tmaxarray[0])))
+       fprintf(stderr,"Netcdf data not read.\n");
 
-		if ((retval = nc_inq_varid(ncid, "wind" , &varid)))
-		   fprintf(stderr,"Netcdf variable not found.\n");
-		if ((retval = nc_get_vara_float(ncid, varid, start,count, &windarray[0])))
-		   fprintf(stderr,"Netcdf data not read.\n");
+    if ((retval = nc_inq_varid(ncid, "wind" , &varid)))
+       fprintf(stderr,"Netcdf variable not found.\n");
+    if ((retval = nc_get_vara_float(ncid, varid, start,count, &windarray[0])))
+       fprintf(stderr,"Netcdf data not read.\n");
 
-               /* Close the file. */
-               if ((retval = nc_close(ncid)))
-		   fprintf(stderr,"File not closed.\n");
+              /* Close the file. */
+    if ((retval = nc_close(ncid)))
+        fprintf(stderr,"File not closed.\n");
 
-        return 0;
+    return 0;
 }

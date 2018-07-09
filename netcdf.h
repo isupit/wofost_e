@@ -42,9 +42,9 @@
 extern "C" {
 #endif
 
-  /*#define _FILE_OFFSET_BITS = 64
+/*#define _FILE_OFFSET_BITS = 64
 #define _LARGEFILE_SOURCE
-#define _LAGREFILE64_SOURCE*/
+#define _LAGREFILE64_SOURCE */
 
 /*
  *  The netcdf external data types

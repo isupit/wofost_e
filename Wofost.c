@@ -10,6 +10,7 @@
 int main() {
     FILE *ifp;
     FILE **output;
+    FILE *result;
     
     SimUnit *Grid = NULL;
     SimUnit *initial = NULL;
@@ -85,7 +86,6 @@ int main() {
         Grid->start     = Start;            // Start day (=day number)
         Grid->ensembles = N_ensembles;
         Grid->file      = count++;          // number of elements in Grid carousel
-        
         Grid->emergence = Emergence;        // Start the simulations at emergence (1) or at sowing (0)
         Grid->next      = NULL;
         
@@ -98,30 +98,28 @@ int main() {
     /* Close the input file */
     fclose(ifp);
 
-   /* Allocate memory for the meteorogical ensembles */
-   float* q_ensembles      = malloc(sizeof(float) * 732 * max_N_ensembles);
-   float* wind_ensembles   = malloc(sizeof(float) * 732 * max_N_ensembles);
-   float* tmin_ensembles   = malloc(sizeof(float) * 732 * max_N_ensembles);
-   float* tmax_ensembles   = malloc(sizeof(float) * 732 * max_N_ensembles);
-   float* sw_ensembles     = malloc(sizeof(float) * 732 * max_N_ensembles);
-   float* precip_ensembles = malloc(sizeof(float) * 732 * max_N_ensembles);
+    /* Allocate memory for the meteorogical ensembles */
+    float* q_ensembles      = malloc(sizeof(float) * 732 * max_N_ensembles);
+    float* wind_ensembles   = malloc(sizeof(float) * 732 * max_N_ensembles);
+    float* tmin_ensembles   = malloc(sizeof(float) * 732 * max_N_ensembles);
+    float* tmax_ensembles   = malloc(sizeof(float) * 732 * max_N_ensembles);
+    float* sw_ensembles     = malloc(sizeof(float) * 732 * max_N_ensembles);
+    float* precip_ensembles = malloc(sizeof(float) * 732 * max_N_ensembles);
 
-   /* Read ensemble data */
-   GetEnsembles(q_ensembles,tmin_ensembles,tmax_ensembles,sw_ensembles,wind_ensembles,precip_ensembles,max_N_ensembles);
+    /* Read ensemble data */
+    GetEnsembles(q_ensembles,tmin_ensembles,tmax_ensembles,sw_ensembles,wind_ensembles,precip_ensembles,max_N_ensembles);
 
     
     /* Get the meteodata */
-    GetMeteoData(path, dateString, place);
+    //GetMeteoData(path, dateString, place);
     int i;
     int ens=0;
     
     /* Allocate memory for the file pointers */
     output = malloc(sizeof(**output) * --count);
-
     
     /* Open the output file */
-    output[0] = fopen("ensembles_output.txt", "w");
-    
+    result = fopen("ensembles_output.txt", "w");
     
     /* Go back to the beginning of the list */
     Grid = initial;
@@ -137,10 +135,9 @@ int main() {
         Emergence = Grid->emergence;
         //printf("Crop: %f %f %f\n",Grid->crp->prm.TSumEmergence,Grid->crp->prm.TempSum1,Grid->crp->prm.TempSum2);
         
-	for (ens=0;ens<Grid->ensembles;ens++)
-        {
-            /*  For each ensemble member the states and rates have to be set */
-            ResetEnsemble(Crop, WatBal);
+	for (ens=0; ens<Grid->ensembles; ens++)
+        {    
+            Emergence = 0;
             
             /* Set the ensemble meteo data*/
             for (i=1;i<732;i++)
@@ -166,6 +163,9 @@ int main() {
                 {
                     if (EmergenceCrop(Emergence))
                     {                 
+                        /*  reset the states and rates  */
+                        InitializeStatesRates();
+                        printf("%3d %4d %4d\n", ens, Grid->file, Day);
                         /* Initialize */
                         InitializeCrop();
                         InitializeWatBal();
@@ -189,7 +189,7 @@ int main() {
 
                         if (print_all || Crop->DevelopmentStage >= Crop->prm.DevelopStageHarvest)
                         {
-                            fprintf(output[0],"%d %d %4d %7.1f %7.1f %7.1f %7.2f %7.2f %7.2f %7.3f %7.2f %7.1f\n",
+                            fprintf(result,"%3d %3d %4d %7.1f %7.1f %7.1f %7.2f %7.2f %7.2f %7.3f %7.2f %7.1f\n",
                                 ens,Grid->file, 
                              Day,Crop->st.stems,Crop->st.leaves,Crop->st.storage,
                              Crop->st.LAI,Crop->DevelopmentStage,WatBal->WaterStress,
@@ -205,16 +205,6 @@ int main() {
                         Crop->GrowthDay++;
                     }
                 }
-                /* Store the daily calculations in the Grid structure */
-                /* Store the daily calculations in the Grid structure */
-                //Grid->crp  = Crop;
-                //Grid->soil = WatBal;
-                //Grid->mng  = Mng;
-                //Grid->ste  = Site;
-
-                /* Update time */
-                //simTime.tm_mday++;
-                //mktime(&simTime);
             }
         }
         Grid = Grid->next;
@@ -224,7 +214,7 @@ int main() {
      Grid = initial;
     
     /* Close the output files and free the allocated memory */
-    fclose(output[0]);
+    fclose(result);
     free(output);
 
     /* Go back to the beginning of the list */

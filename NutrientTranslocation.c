@@ -10,34 +10,34 @@
 /* ---------------------------------------------------------------------------*/
 void NutrientTranslocation()                                                                                                       
 {
-     float Avail_N_lv;
-     float Avail_P_lv; 
-     float Avail_K_lv;
-     
-     float Avail_N_st;
-     float Avail_P_st; 
-     float Avail_K_st;      
-     
-     float Avail_N_rt; 
-     float Avail_P_rt; 
-     float Avail_K_rt; 
+    float Avail_N_lv;
+    float Avail_P_lv; 
+    float Avail_K_lv;
+    
+    float Avail_N_st;
+    float Avail_P_st; 
+    float Avail_K_st;      
+    
+    float Avail_N_rt; 
+    float Avail_P_rt; 
+    float Avail_K_rt; 
                                                                                                                       
     /* N amount available for translocation */                                                                                                              
     Avail_N_lv = max(0.,Crop->N_st.leaves - Crop->st.leaves * Crop->prm.N_ResidualFrac_lv);
     Avail_N_st = max(0.,Crop->N_st.stems  - Crop->st.stems  * Crop->prm.N_ResidualFrac_st);
-    Avail_N_rt = max(0.,min((Crop->N_rt.Transloc_lv + Crop->N_rt.Transloc_st) * Crop->prm.FracTranslocRoots, 
+    Avail_N_rt = max(0.,min((Avail_N_lv + Avail_N_st) * Crop->prm.FracTranslocRoots, 
             Crop->N_st.roots - Crop->st.roots * Crop->prm.N_ResidualFrac_ro));
    
     /* P amount available for translocation */ 
     Avail_P_lv = max (0.,Crop->P_st.leaves - Crop->st.leaves * Crop->prm.P_ResidualFrac_lv);
     Avail_P_st = max (0.,Crop->P_st.stems  - Crop->st.stems  * Crop->prm.P_ResidualFrac_st);
-    Avail_P_rt = max (0.,min((Crop->P_rt.Transloc_lv + Crop->P_rt.Transloc_st) * Crop->prm.FracTranslocRoots, 
+    Avail_P_rt = max (0.,min((Avail_P_lv + Avail_P_st) * Crop->prm.FracTranslocRoots, 
             Crop->P_st.roots - Crop->st.roots * Crop->prm.P_ResidualFrac_ro));
     
     /* K amount available for translocation */ 
     Avail_K_lv = max(0.,Crop->K_st.leaves - Crop->st.leaves * Crop->prm.K_ResidualFrac_lv);
     Avail_K_st = max(0.,Crop->K_st.stems  - Crop->st.stems  * Crop->prm.K_ResidualFrac_st);
-    Avail_K_rt = max(0.,min((Crop->K_rt.Transloc_lv + Crop->K_rt.Transloc_st) * Crop->prm.FracTranslocRoots, 
+    Avail_K_rt = max(0.,min((Avail_K_lv + Avail_K_st) * Crop->prm.FracTranslocRoots, 
             Crop->K_st.roots - Crop->st.roots * Crop->prm.P_ResidualFrac_ro));
 
     /* Total available nutrient amount for translocation */

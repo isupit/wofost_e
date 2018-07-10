@@ -139,12 +139,14 @@ void GetCropData(Plant *CROP, char *cropfile)
     CROP->RootDepth_prev = 0.;
     CROP->DevelopmentStage = 0.;
     CROP->DaysOxygenStress = 0; // No crop development therefore no oxygen stress
+    CROP->GrowthDay = 0.;
 
     /* No initial nutrient stress */
     CROP->NutrientStress = 1.;
     CROP->NPK_Indx =1;
-
-
+    
+    CROP->LeaveProperties = NULL;
+    
     /* STATES */  
     /* Set the initial growth states to zero */
     CROP->st.roots   = 0.;

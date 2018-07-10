@@ -85,9 +85,9 @@ void RateCalcultionNutrients()
     
     NutrientPartioning();
     
-    NutrientTranslocation();
-    
     CropNutrientRates();
+    
+    NutrientTranslocation();
     
     SoilNutrientRates();
     

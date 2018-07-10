@@ -35,8 +35,10 @@ void SoilNutrientRates()
     P_fert = Afgen(Mng->P_Fert_table, &day_fl) * Afgen(Mng->P_Uptake_frac, &day_fl);
     K_fert = Afgen(Mng->K_Fert_table, &day_fl) * Afgen(Mng->K_Uptake_frac, &day_fl);
     
+    /* Change in total inorganic NPK in soil as function of fertilizer input, */
+    /* soil NPK mineralization and crop uptake                                */
     Site->rt_N_tot = (N_fert / Step) - Crop->N_rt.Uptake  + Site->rt_N_mins;
     Site->rt_P_tot = (P_fert / Step) - Crop->P_rt.Uptake  + Site->rt_P_mins;
     Site->rt_K_tot = (K_fert / Step) - Crop->K_rt.Uptake  + Site->rt_K_mins;
-    //printf("  Site->rt_N_mins: %5.1f Site->rt_P_mins: %5.1f Site->rt_K_mins: %5.1f", Site->rt_N_mins, Site->rt_P_mins, Site->rt_K_mins);
+    //printf("  Site->rt_N_mins: %5.1f Site->rt_P_mins: %5.1f Site->rt_K_mins: %5.1f\n", Site->rt_N_mins, Site->rt_P_mins, Site->rt_K_mins);
 }

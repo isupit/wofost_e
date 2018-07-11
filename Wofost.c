@@ -5,7 +5,7 @@
 #include "wofost.h"
 #include "extern.h"
 #include <time.h>
-#include "netcdf.h"
+#include <netcdf.h>
 
 int main() {
     FILE *ifp;

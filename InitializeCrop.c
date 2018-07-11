@@ -71,12 +71,7 @@ void InitializeCrop()
     Crop->LeaveProperties->weight = Crop->st.leaves;
     Crop->LeaveProperties->area   = Afgen(Crop->prm.SpecificLeaveArea, &(Crop->DevelopmentStage));
     Crop->LeaveProperties->next   = NULL;
-    
-    /* Crop death rates set to zero */
-    Crop->drt.leaves = 0.;
-    Crop->drt.roots  = 0.;
-    Crop->drt.stems  = 0.;
-    
+        
     /* Emergence true */
     Crop->Emergence = 1;
     Crop->GrowthDay = 1;

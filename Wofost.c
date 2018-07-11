@@ -132,12 +132,16 @@ int main() {
         Mng       = Grid->mng;
         Site      = Grid->ste;
         Start     = Grid->start;
-        Emergence = Grid->emergence;
+        
         //printf("Crop: %f %f %f\n",Grid->crp->prm.TSumEmergence,Grid->crp->prm.TempSum1,Grid->crp->prm.TempSum2);
         
 	for (ens=0; ens<Grid->ensembles; ens++)
         {    
-            Emergence = 0;
+            /* set the Emergence for each member */
+            Emergence = Grid->emergence;
+            
+            /*  reset the states and rates  */
+            InitializeStatesRates();
             
             /* Set the ensemble meteo data*/
             for (i=1;i<732;i++)
@@ -163,8 +167,7 @@ int main() {
                 {
                     if (EmergenceCrop(Emergence))
                     {                 
-                        /*  reset the states and rates  */
-                        InitializeStatesRates();
+                   
                         printf("%3d %4d %4d\n", ens, Grid->file, Day);
                         /* Initialize */
                         InitializeCrop();

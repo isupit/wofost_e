@@ -50,6 +50,18 @@ void InitializeStatesRates()
     Crop->K_st.storage= 0.;
     
     /* RATES */
+    /* Crop death rates set to zero */
+    Crop->drt.leaves = 0.;
+    Crop->drt.roots  = 0.;
+    Crop->drt.stems  = 0.;
+    
+    /* Crop growth rates set to zero */
+    Crop->rt.roots   = 0.,
+    Crop->rt.stems   = 0.,
+    Crop->rt.leaves  = 0.,
+    Crop->rt.storage = 0.,
+    Crop->rt.LAIExp  = 0.,
+    
     /* set the nutrient N rates */
     Crop->N_rt.Demand_lv = 0.;
     Crop->N_rt.Demand_ro = 0.;

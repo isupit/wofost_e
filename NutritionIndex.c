@@ -53,6 +53,10 @@ void NutritionINDX()
     Crop->P_st.Indx = limit(tiny,1.0, ((P_Veg -P_res)/notnul(P_opt_veg - P_res)));
     Crop->K_st.Indx = limit(tiny,1.0, ((K_Veg -K_res)/notnul(K_opt_veg - K_res)));
     
+//    Crop->N_st.Indx = 1.0;
+//    Crop->P_st.Indx = 1.0;
+//    Crop->K_st.Indx = 1.0;
+    
     Crop->NPK_Indx = (Crop->N_st.Indx < Crop->P_st.Indx) ? Crop->N_st.Indx : Crop->P_st.Indx;
     Crop->NPK_Indx = (Crop->NPK_Indx < Crop->K_st.Indx) ? Crop->NPK_Indx : Crop->K_st.Indx;
     

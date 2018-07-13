@@ -167,8 +167,7 @@ int main() {
                 {
                     if (EmergenceCrop(Emergence))
                     {                 
-                   
-                        printf("%3d %4d %4d\n", ens, Grid->file, Day);
+                        //printf("%3d %4d %4d\n", ens, Grid->file, Day);
                         /* Initialize */
                         InitializeCrop();
                         InitializeWatBal();

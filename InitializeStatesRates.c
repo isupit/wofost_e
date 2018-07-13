@@ -241,4 +241,21 @@ void InitializeStatesRates()
     WatBal->rt.WaterRootExt      = 0.;
     WatBal->rt.Transpiration     = 0.,
     WatBal->rt.RootZoneMoisture  = 0.;
+    
+    /* Set the soil nutrient states rates to zero */
+    Site->st_N_tot = 0.;
+    Site->st_P_tot = 0.;
+    Site->st_K_tot = 0.;
+
+    Site->st_N_mins = 0.;
+    Site->st_P_mins = 0.;
+    Site->st_K_mins = 0.;   
+    
+    Site->rt_N_tot = 0.;
+    Site->rt_P_tot = 0.;
+    Site->rt_K_tot = 0.;
+
+    Site->rt_N_mins = 0.;
+    Site->rt_P_mins = 0.;
+    Site->rt_K_mins = 0.;
 }

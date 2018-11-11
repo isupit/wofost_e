@@ -190,7 +190,7 @@ void GetCropData(Plant *CROP, char *cropfile)
     CROP->N_st.Optimum_st = 0;
 
     CROP->P_st.Optimum_lv = 0;
-    CROP->K_st.Optimum_st = 0;
+    CROP->P_st.Optimum_st = 0;
 
     CROP->K_st.Optimum_lv = 0;
     CROP->K_st.Optimum_st = 0;

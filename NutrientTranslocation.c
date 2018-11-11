@@ -56,7 +56,7 @@ void NutrientTranslocation()
     {
         Crop->N_rt.Transloc_lv = 0.;       
         Crop->N_rt.Transloc_st = 0.;
-        Crop->K_rt.Transloc_ro = 0.;
+        Crop->N_rt.Transloc_ro = 0.;
     }
     
     /* Actual P translocation rate */

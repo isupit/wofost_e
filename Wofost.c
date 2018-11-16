@@ -167,7 +167,7 @@ int main() {
                 {
                     if (EmergenceCrop(Emergence))
                     {                 
-                        //printf("%3d %4d %4d\n", ens, Grid->file, Day);
+                        printf("%3d %4d %4d\n", ens, Grid->file, Day);
                         /* Initialize */
                         InitializeCrop();
                         InitializeWatBal();
@@ -179,8 +179,13 @@ int main() {
                 {   
                     if (Crop->DevelopmentStage <= Crop->prm.DevelopStageHarvest && Crop->GrowthDay < CycleLength) 
                     {
-                        /* Rate calculations */
+                        /* Calculate the evapotranspiration */
                         EvapTra();
+                        
+                        /* Set the rates to zero*/
+                        RatesToZero();
+                        
+                        /* Rate calculations */
                         RateCalulationWatBal();
                         RateCalcultionNutrients();
                         RateCalculationCrop();
@@ -223,6 +228,14 @@ int main() {
     Grid = initial;
     Clean(Grid);
 
+    /* Clean the meteo ensemble */
+    free(q_ensembles);
+    free(wind_ensembles);
+    free(tmin_ensembles);  
+    free(tmax_ensembles);
+    free(sw_ensembles);    
+    free(precip_ensembles);
+    
     return 0;
 }
 

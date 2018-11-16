@@ -15,11 +15,7 @@ void SoilNutrientRates()
     float K_fert;
     
     float day_fl;
-    
-    Site->rt_N_mins = 0.;
-    Site->rt_P_mins = 0.;
-    Site->rt_K_mins = 0.;
-    
+      
     if (Crop->DevelopmentStage > 0. && Crop->DevelopmentStage <= Crop->prm.DevelopmentStageNLimit)
     {   /* NPK rates that come available through mineralization, cannot exceed */
         /* the available NPK in the soil                                       */

@@ -20,16 +20,16 @@ void NutrientMax()
     Crop->K_st.Max_lv = Afgen(Crop->prm.K_MaxLeaves, &(Crop->DevelopmentStage));
       
     /* Maximum N concentrations in stems and roots (kg N kg-1) */
-    Crop->N_st.Max_st = Crop->prm.N_MaxRoots * Crop->N_st.Max_lv;
-    Crop->N_st.Max_ro = Crop->prm.N_MaxStems * Crop->N_st.Max_lv;
+    Crop->N_st.Max_st = Crop->prm.N_MaxStems * Crop->N_st.Max_lv;
+    Crop->N_st.Max_ro = Crop->prm.N_MaxRoots * Crop->N_st.Max_lv;
     
     /* Maximum P concentrations in stems and roots (kg P kg-1) */
-    Crop->P_st.Max_st = Crop->prm.P_MaxRoots * Crop->P_st.Max_lv;
-    Crop->P_st.Max_ro = Crop->prm.P_MaxStems * Crop->P_st.Max_lv;
+    Crop->P_st.Max_st = Crop->prm.P_MaxStems * Crop->P_st.Max_lv;
+    Crop->P_st.Max_ro = Crop->prm.P_MaxRoots * Crop->P_st.Max_lv;
     
     /* Maximum K concentrations in stems and roots (kg K kg-1) */
-    Crop->K_st.Max_st = Crop->prm.K_MaxRoots * Crop->K_st.Max_lv;
-    Crop->K_st.Max_ro = Crop->prm.K_MaxStems * Crop->K_st.Max_lv;
+    Crop->K_st.Max_st = Crop->prm.K_MaxStems * Crop->K_st.Max_lv;
+    Crop->K_st.Max_ro = Crop->prm.K_MaxRoots * Crop->K_st.Max_lv;
 }
 
 

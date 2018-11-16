@@ -47,7 +47,35 @@ void InitializeNutrients()
     Crop->K_st.stems  = Crop->K_st.Max_st * Crop->st.stems;
     Crop->K_st.roots  = Crop->K_st.Max_ro * Crop->st.roots;
     Crop->K_st.storage = 0.;
-        
+    
+    /* No nutrient losses at initialization */
+    Crop->N_st.death_lv = 0.;
+    Crop->N_st.death_st = 0.;
+    Crop->N_st.death_ro = 0.;
+   
+    Crop->P_st.death_lv = 0.;
+    Crop->P_st.death_st = 0.;
+    Crop->P_st.death_ro = 0.;
+  
+    Crop->K_st.death_lv = 0.;
+    Crop->K_st.death_st = 0.;
+    Crop->K_st.death_ro = 0.;
+       
+    /* Set the initial uptake to zero*/
+    Crop->N_st.Uptake    = 0.;
+    Crop->N_st.Uptake_lv = 0.;
+    Crop->N_st.Uptake_st = 0.;
+    Crop->N_st.Uptake_ro = 0.;
+    
+    Crop->P_st.Uptake    = 0.;
+    Crop->P_st.Uptake_lv = 0.;
+    Crop->P_st.Uptake_st = 0.;
+    Crop->P_st.Uptake_ro = 0.;
+    
+    Crop->K_st.Uptake    = 0.;
+    Crop->K_st.Uptake_lv = 0.;
+    Crop->K_st.Uptake_st = 0.;
+    Crop->K_st.Uptake_ro = 0.;
     
     day_fl = (float)Day;
     
@@ -59,5 +87,15 @@ void InitializeNutrients()
     Site->st_N_mins = Mng->N_Mins;
     Site->st_P_mins = Mng->P_Mins;
     Site->st_K_mins = Mng->K_Mins;
-        
+       
+    /* No nutrient stress at initialization */
+    Crop->N_st.Indx = 1.;
+    Crop->P_st.Indx = 1.;
+    Crop->K_st.Indx = 1.;
+    Crop->NPK_Indx  = 1.;
+       
+    /* Set the initial optimal leave concentrations to zero */
+    Crop->N_st.Optimum_lv = 0;
+    Crop->N_st.Optimum_st = 0;
+    
 }     

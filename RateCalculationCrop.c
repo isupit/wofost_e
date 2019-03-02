@@ -22,14 +22,6 @@ void RateCalculationCrop()
     float Stress;
     float Vernalization;
 
-    /* Set rates to 0 */
-    Crop->rt.roots   = 0.;
-    Crop->rt.leaves  = 0.;
-    Crop->rt.stems   = 0.;
-    Crop->rt.storage = 0.;
-    Crop->rt.LAIExp  = 0.;      
-    Crop->rt.vernalization = 0.;
-
     /* Assimilation */
     GrossAssimilation = DailyTotalAssimilation();
 

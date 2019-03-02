@@ -19,19 +19,7 @@ void NutrientPartioning()
     float N_Fix_rt;
     
     float tiny = 0.001;
-    
-    Crop->N_rt.Uptake_lv = 0.;
-    Crop->N_rt.Uptake_st = 0.;
-    Crop->N_rt.Uptake_ro = 0.;
-    
-    Crop->P_rt.Uptake_lv = 0.;      
-    Crop->P_rt.Uptake_st = 0.;      
-    Crop->P_rt.Uptake_ro = 0.;  
-    
-    Crop->K_rt.Uptake_lv = 0.;
-    Crop->K_rt.Uptake_st = 0.;
-    Crop->K_rt.Uptake_ro = 0.;         
-    
+        
     Total_N_demand = Crop->N_rt.Demand_lv + Crop->N_rt.Demand_st + Crop->N_rt.Demand_ro;
     Total_P_demand = Crop->P_rt.Demand_lv + Crop->P_rt.Demand_st + Crop->P_rt.Demand_ro;
     Total_K_demand = Crop->K_rt.Demand_lv + Crop->K_rt.Demand_st + Crop->K_rt.Demand_ro;

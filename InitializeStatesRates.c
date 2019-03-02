@@ -103,97 +103,6 @@ void InitializeStatesRates()
     Crop->K_st.roots  = 0.;
     Crop->K_st.storage= 0.;
     
-    /* RATES */
-    /* Crop death rates set to zero */
-    Crop->drt.leaves = 0.;
-    Crop->drt.roots  = 0.;
-    Crop->drt.stems  = 0.;
-    
-    /* Crop growth rates set to zero */
-    Crop->rt.roots   = 0.,
-    Crop->rt.stems   = 0.,
-    Crop->rt.leaves  = 0.,
-    Crop->rt.storage = 0.,
-    Crop->rt.LAIExp  = 0.,
-    
-    /* Set the nutrient demand rates to zero */
-    Crop->N_rt.Demand_lv = 0.;
-    Crop->N_rt.Demand_ro = 0.;
-    Crop->N_rt.Demand_so = 0.;
-    Crop->N_rt.Demand_st = 0.;
-    
-    Crop->P_rt.Demand_lv = 0.;
-    Crop->P_rt.Demand_ro = 0.;
-    Crop->P_rt.Demand_so = 0.;
-    Crop->P_rt.Demand_st = 0.;
-            
-    Crop->K_rt.Demand_lv = 0.;
-    Crop->K_rt.Demand_ro = 0.;
-    Crop->K_rt.Demand_so = 0.;
-    Crop->K_rt.Demand_st = 0.;
-    
-    /* Set the nutrient translocation rates to zero */
-    Crop->N_rt.Transloc    = 0.;
-    Crop->N_rt.Transloc_lv = 0.;
-    Crop->N_rt.Transloc_ro = 0.;
-    Crop->N_rt.Transloc_st = 0.;
-    
-    Crop->P_rt.Transloc    = 0.;
-    Crop->P_rt.Transloc_lv = 0.;
-    Crop->P_rt.Transloc_ro = 0.;
-    Crop->P_rt.Transloc_st = 0.;
-    
-    Crop->K_rt.Transloc    = 0.;
-    Crop->K_rt.Transloc_lv = 0.;
-    Crop->K_rt.Transloc_ro = 0.;
-    Crop->K_rt.Transloc_st = 0.;
-    
-    /* Set the nutrient uptake to zero */       
-    Crop->N_rt.Uptake    = 0.;
-    Crop->N_rt.Uptake_lv = 0.;
-    Crop->N_rt.Uptake_ro = 0.;
-    Crop->N_rt.Uptake_st = 0.;
-    
-    Crop->P_rt.Uptake    = 0.;
-    Crop->P_rt.Uptake_lv = 0.;
-    Crop->P_rt.Uptake_ro = 0.;
-    Crop->P_rt.Uptake_st = 0.;
-    
-    Crop->K_rt.Uptake    = 0.;
-    Crop->K_rt.Uptake_lv = 0.;
-    Crop->K_rt.Uptake_ro = 0.;
-    Crop->K_rt.Uptake_st = 0.;
-      
-    /* Set the nutrient rates due to dying to zero */
-    Crop->N_rt.death_lv = 0.;
-    Crop->N_rt.death_ro = 0.;
-    Crop->N_rt.death_st = 0.;
-    
-    Crop->P_rt.death_lv = 0.;
-    Crop->P_rt.death_ro = 0.;
-    Crop->P_rt.death_st = 0.;
-    
-    Crop->K_rt.death_lv = 0.;
-    Crop->K_rt.death_ro = 0.;
-    Crop->K_rt.death_st = 0.;
-    
-    /* Set the nutrient rates to zero */
-    Crop->N_rt.leaves  = 0.;
-    Crop->N_rt.roots   = 0.;
-    Crop->N_rt.stems   = 0.;
-    Crop->N_rt.storage = 0.;
-    
-    Crop->P_rt.leaves  = 0.;
-    Crop->P_rt.roots   = 0.;
-    Crop->P_rt.stems   = 0.;
-    Crop->P_rt.storage = 0.;
-    
-    Crop->K_rt.leaves  = 0.;
-    Crop->K_rt.roots   = 0.;
-    Crop->K_rt.stems   = 0.;
-    Crop->K_rt.storage = 0.;
-  
-    
     /* Free the leaves of this node. Loop until the last element in the */
     /* list and free each node */
     while (Crop->LeaveProperties)
@@ -226,22 +135,7 @@ void InitializeStatesRates()
     WatBal->st.SurfaceStorage    = 0.;
     WatBal->st.Transpiration     = 0.;
     WatBal->st.WaterRootExt      = 0.;
-    
-    WatBal->rt.EvapWater         = 0.;
-    WatBal->rt.EvapSoil          = 0.;   
-    WatBal->rt.Infiltration      = 0.;
-    WatBal->rt.Irrigation        = 0.;
-    WatBal->rt.Loss              = 0.;
-    WatBal->rt.Moisture          = 0.;
-    WatBal->rt.MoistureLOW       = 0.;
-    WatBal->rt.Percolation       = 0.;
-    WatBal->rt.RootZoneMoisture  = 0.;
-    WatBal->rt.Runoff            = 0.;
-    WatBal->rt.SurfaceStorage    = 0.;
-    WatBal->rt.WaterRootExt      = 0.;
-    WatBal->rt.Transpiration     = 0.,
-    WatBal->rt.RootZoneMoisture  = 0.;
-    
+       
     /* Set the soil nutrient states rates to zero */
     Site->st_N_tot = 0.;
     Site->st_P_tot = 0.;
@@ -251,11 +145,4 @@ void InitializeStatesRates()
     Site->st_P_mins = 0.;
     Site->st_K_mins = 0.;   
     
-    Site->rt_N_tot = 0.;
-    Site->rt_P_tot = 0.;
-    Site->rt_K_tot = 0.;
-
-    Site->rt_N_mins = 0.;
-    Site->rt_P_mins = 0.;
-    Site->rt_K_mins = 0.;
 }
